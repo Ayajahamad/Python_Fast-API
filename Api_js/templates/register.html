@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    
+</head>
+<body>
+    <h1>User Registration</h1>
+    <form id="register-form" onsubmit="event.preventDefault(); registerUser();">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="admin">Admin</option>
+            <option value="user">User</option>
+        </select><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        // JavaScript function to handle the form submission
+        async function registerUser() {
+            // Collect form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('role').value;
+
+            // Create the user object
+            const userData = {
+                username: username,
+                password: password,
+                role: role
+            };
+
+            // Send POST request to FastAPI backend
+            const response = await fetch('/register/user/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+            });
+
+            // Handle the response
+            const result = await response.json();
+            if (response.ok) {
+                alert("User registered successfully!");
+                console.log(result);
+            } else {
+                alert("Error: " + result.detail);
+            }
+        }
+    </script>
+</body>
+</html>
