@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Uploaded Successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #4CAF50;
+        }
+
+        p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+            .button-container a {
+                display: inline-block;
+                padding: 10px 15px;
+                margin: 10px;
+                background-color: #4CAF50;
+                color: #fff;
+                text-decoration: none;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+                .button-container a:hover {
+                    background-color: #45a049;
+                }
+
+            .button-container .back-btn {
+                background-color: #007bff;
+            }
+
+                .button-container .back-btn:hover {
+                    background-color: #0056b3;
+                }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Uploaded Successfully!</h1>
+        <p><strong>Resume ID:</strong> {{ file_id }}</p>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Email:</strong> {{ email }}</p>
+        <p><strong>ResumeName:</strong> {{ filename }}</p>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <!-- Download Button -->
+            <a href="/download/{{ file_id }}" class="download-btn">Download the Resume</a>
+
+            <!-- Go Back to Files Button -->
+            <a href="/files/" class="back-btn">Go Back to All Profiles</a>
+        </div>
+    </div>
+</body>
+</html>

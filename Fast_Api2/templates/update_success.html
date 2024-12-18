@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Updated Successfully</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+            .container h1 {
+                color: #4CAF50;
+                font-size: 36px;
+                margin-bottom: 20px;
+            }
+
+            .container p {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 15px;
+            }
+
+        .details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .details p {
+                font-size: 18px;
+                color: #333;
+                margin: 8px 0;
+            }
+
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+            .btn:hover {
+                background-color: #45a049;
+            }
+
+        .back-link {
+            text-decoration: none;
+            font-size: 16px;
+            color: #007bff;
+            transition: color 0.3s ease;
+        }
+
+            .back-link:hover {
+                color: #0056b3;
+            }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Updated Successfully!</h1>
+
+        <div class="details">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Resume:</strong> {{ filename }}</p>
+        </div>
+
+        <a href="/files/" class="btn">Go Back to ProFile List</a>
+    </div>
+</body>
+</html>
