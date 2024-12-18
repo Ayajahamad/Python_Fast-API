@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        header {
+            width: 100%;
+            padding: 15px 20px;
+            background: #007bff;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .dashboard {
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .welcome {
+            margin-bottom: 20px;
+        }
+
+        .user-details {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+            .user-details h2 {
+                font-size: 20px;
+                color: #007bff;
+                margin-bottom: 10px;
+            }
+
+            .user-details p {
+                font-size: 16px;
+                color: #555;
+                margin-bottom: 5px;
+            }
+
+        .quick-links {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .link {
+            display: block;
+            width: 150px;
+            padding: 10px;
+            margin: 10px;
+            text-decoration: none;
+            color: white;
+            background: #007bff;
+            border-radius: 5px;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .link:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+        .application-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+            .application-button:hover {
+                background-color: #218838;
+                transform: scale(1.05);
+            }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 14px;
+            color: white;
+            text-align: center;
+            background: #007bff;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        User Dashboard
+    </header>
+
+    <div class="dashboard">
+        <div class="welcome">
+            <h1>Welcome, {{user.username}}!</h1>
+            <p>You are logged in successfully. Explore your dashboard below.</p>
+        </div>
+
+        <div class="user-details">
+            <h2>Your Details</h2>
+            <p><strong>Name:</strong> {{user.username}}</p>
+            <p><strong>Password:</strong> {{user.password}} </p>
+            <p><strong>Member Since:</strong> [Registration Date]</p>
+        </div>
+
+        <div class="quick-links">
+            <a href="/user/profile" class="link">View Profile</a>
+            <a href="/user/edit" class="link">Edit Details</a>
+            <a href="/index/" class="link">Logout</a>
+        </div>
+
+        <button class="application-button" onclick="window.location.href='/upload/'">Submit Application</button>
+    </div>
+
+    <footer>
+        &copy; 2024 User Dashboard. All Rights Reserved.
+    </footer>
+</body>
+</html>

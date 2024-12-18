@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+            .container h1 {
+                color: #4CAF50;
+                font-size: 30px;
+                margin-bottom: 20px;
+            }
+
+            .container p {
+                font-size: 18px;
+                color: #555;
+                margin-bottom: 15px;
+            }
+
+        .details {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+            .details p {
+                font-size: 18px;
+                color: #333;
+                margin: 8px 0;
+            }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+            .btn:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+            .btn.delete {
+                background-color: #f44336;
+            }
+
+                .btn.delete:hover {
+                    background-color: #d32f2f;
+                }
+
+            .btn.edit {
+                background-color: #ffc107;
+                color: #333;
+            }
+
+                .btn.edit:hover {
+                    background-color: #e0a800;
+                }
+
+        footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Profile Uploaded Successfully!</h1>
+
+        <div class="details">
+            <p><strong>Name:</strong> {{ name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Resume:</strong> {{ filename }}</p>
+        </div>
+
+        <div class="btn-group">
+            <a href="/employees/view/" class="btn">View Profile</a>
+            <a href="/update/{{ id }}" class="btn edit">Edit Profile</a>
+            <a href="/delete/{{ id }}" class="btn delete">Delete Profile</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Employee Management System. All Rights Reserved.
+    </footer>
+</body>
+</html>

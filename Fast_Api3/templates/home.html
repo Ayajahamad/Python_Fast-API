@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Profile Management</title>
+    <style>
+        /* Basic styling for the homepage */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            color: #333;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        .container {
+            width: 80%;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .link-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .link-button:hover {
+                background-color: #0056b3;
+            }
+
+        .card {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+            .card:hover {
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            }
+
+        /* Long button at the bottom after the cards */
+        .long-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 20px 50px;
+            font-size: 20px;
+            color: white;
+            background-color: #28a745;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            width: 50%; /* Adjust width to fit the container */
+            max-width: 400px; /* Optional: limit the width */
+            margin-left: auto; /* Center the button */
+            margin-right: auto; /* Center the button */
+        }
+
+            .long-button:hover {
+                background-color: #218838;
+            }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header>
+        Employee Profile Management
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="card">
+            <h3>Upload Employee</h3>
+            <p>Upload a new employee profile</p>
+            <a href="/upload/" class="link-button">Upload Profile</a>
+        </div>
+
+        <div class="card">
+            <h3>Update Employee</h3>
+            <p>Edit an existing employee profile</p>
+            <a href="/updateid/" class="link-button">Update Profile</a>
+        </div>
+
+        <div class="card">
+            <h3>Delete Employee</h3>
+            <p>Remove an employee profile</p>
+            <a href="/deleteid/" class="link-button">Delete Profile</a>
+        </div>
+
+        <div class="card">
+            <h3>Download Resume</h3>
+            <p>Download employee resumes</p>
+            <a href="/download/" class="link-button">Download Resume</a>
+        </div>
+
+        <!-- Long button to view all employees after the cards -->
+        <a href="/employees/" class="long-button">View All Employees</a>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        &copy; 2024 Employee Profile Management. All Rights Reserved.
+    </footer>
+
+</body>
+
+</html>

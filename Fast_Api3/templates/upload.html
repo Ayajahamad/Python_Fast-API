@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+
+        input[type="text"], input[type="tel"], input[type="email"], input[type="file"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .submit-btn:hover {
+                background-color: #45a049;
+            }
+
+        .file-label {
+            display: block;
+            padding: 5px;
+            background-color: #f0f0f0;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            .file-label:hover {
+                background-color: #e0e0e0;
+            }
+
+        .form-group span {
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Job Application Form</h1>
+        <form action="/uploaded/" method="post" enctype="multipart/form-data">
+            <!-- Employee Name -->
+            <div class="form-group">
+                <label for="employeeName">Employee Name:</label>
+                <input type="text" id="employeeName" name="name" required>
+            </div>
+
+            <!-- Contact Number -->
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="number" pattern="^\d{10}$" placeholder="Enter 10-digit number" required>
+                <span>Format: 123-456-7890</span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <!-- Highest Qualification -->
+            <div class="form-group">
+                <label for="qualification">Highest Qualification:</label>
+                <select id="qualification" name="qualification" required>
+                    <option value="">Select Qualification</option>
+                    <option value="highschool">High School</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="phd">PhD</option>
+                </select>
+            </div>
+
+            <!-- Role Applying For -->
+            <div class="form-group">
+                <label for="role">Role Applying For:</label>
+                <input type="text" id="role" name="role" required>
+            </div>
+
+            <!-- Resume File -->
+            <div class="form-group">
+                <label for="resume" class="file-label">Upload Resume (PDF or DOCX):</label>
+                <input type="file" id="resume" name="file" accept=".pdf, .docx" required>
+                <span>File formats: PDF, DOCX</span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="submit-btn">Submit Application</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

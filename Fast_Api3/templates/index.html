@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #6cb2eb, #007bff);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 0;
+            background-color: #0056b3;
+            color: #fff;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 900px;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            margin: 30px;
+        }
+
+            .container h1 {
+                font-size: 32px;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .container p {
+                font-size: 18px;
+                line-height: 1.8;
+                color: #555;
+                margin-bottom: 30px;
+            }
+
+        .button-group {
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .button {
+            flex: 1;
+            max-width: 250px;
+            padding: 15px 20px;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #007bff;
+            border-radius: 10px;
+            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+            .button:hover {
+                background-color: #0056b3;
+                transform: scale(1.05);
+            }
+
+            .button span {
+                display: block;
+                margin-top: 5px;
+                font-size: 14px;
+                font-style: italic;
+            }
+
+        .info-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+            .info-section h2 {
+                font-size: 22px;
+                color: #333;
+                margin-bottom: 15px;
+            }
+
+            .info-section ul {
+                list-style: disc;
+                padding-left: 20px;
+                color: #555;
+            }
+
+                .info-section ul li {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+                }
+
+        footer {
+            margin-top: 30px;
+            padding: 15px;
+            font-size: 16px;
+            color: #fff;
+            text-align: center;
+            background: #0056b3;
+            width: 100%;
+        }
+
+            footer a {
+                color: #ffdd57;
+                text-decoration: none;
+            }
+
+                footer a:hover {
+                    text-decoration: underline;
+                }
+    </style>
+</head>
+<body>
+    <header>
+        User-Admin Management Portal
+    </header>
+
+    <div class="container">
+        <h1>Welcome to the Portal</h1>
+        <p>
+            Seamlessly manage your account, whether you're a user registering for opportunities or an admin overseeing the platform.
+            Click below to log in or register as needed.
+        </p>
+
+        <div class="button-group">
+            <a href="/user_login/" class="button">
+                User Login
+                <span>Already have an account? Log in here.</span>
+            </a>
+            <a href="/register/" class="button">
+                User Registration
+                <span>New user? Register your details now.</span>
+            </a>
+            <a href="/admin_login/" class="button">
+                Admin Login
+                <span>Manage users and data securely.</span>
+            </a>
+            <a href="/register/" class="button">
+                Admin Registration
+                <span>New admin? Create your account.</span>
+            </a>
+        </div>
+
+        <div class="info-section">
+            <h2>About This Portal</h2>
+            <ul>
+                <li><strong>For Users:</strong> Easily register your resume and update your details for job opportunities.</li>
+                <li><strong>For Admins:</strong> Securely manage user registrations and oversee data in one place.</li>
+                <li><strong>Data Privacy:</strong> Your data is stored with advanced encryption and high security standards.</li>
+                <li><strong>Easy to Use:</strong> A clean, user-friendly interface for smooth navigation.</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 User-Admin Management Portal. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </footer>
+</body>
+</html>
