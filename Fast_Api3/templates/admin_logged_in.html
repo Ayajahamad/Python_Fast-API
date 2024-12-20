@@ -19,6 +19,8 @@
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            justify-content: space-between; /* Makes sure content takes up available space */
+            height: 100vh; /* Full viewport height */
         }
 
         header {
@@ -115,23 +117,23 @@
     </header>
 
     <div class="dashboard">
-        <h1>Welcome, Admin</h1>
+        <h1>Welcome, {{user.username}}</h1>
         <div class="card-group">
             <div class="card">
                 <h2>All Applications</h2>
                 <p>View and manage all user applications in one place.</p>
                 <a href="/employees/">View Applications</a>
             </div>
-            <div class="card">
+            <!--<div class="card">
                 <h2>User Management</h2>
                 <p>Manage registered users and their details.</p>
                 <a href="/updateid/">Manage Users</a>
-            </div>
-            <div class="card">
+            </div>-->
+            <!--<div class="card">
                 <h2>Profile Settings</h2>
                 <p>Update your account details and preferences.</p>
                 <a href="/admin/settings/">Edit Profile</a>
-            </div>
+            </div>-->
             <div class="card">
                 <h2>Logout</h2>
                 <p>Sign out from the admin dashboard.</p>

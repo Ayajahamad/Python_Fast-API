@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Management</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7fc;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-around; /* Space between content and footer */
             align-items: center;
             height: 100vh;
             margin: 0;
@@ -21,14 +26,15 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 90%;
+            width: 100%;
             max-width: 500px;
             text-align: center;
+            margin-top: 20px;
         }
 
             .container h1 {
                 color: #4CAF50;
-                font-size: 30px;
+                font-size: 25px;
                 margin-bottom: 20px;
             }
 
@@ -68,6 +74,8 @@
             text-decoration: none;
             font-size: 16px;
             transition: background-color 0.3s ease, transform 0.2s;
+            width: 150px; /* Same width for both buttons */
+            text-align: center;
         }
 
             .btn:hover {
@@ -93,9 +101,12 @@
                 }
 
         footer {
-            margin-top: 20px;
+            width: 100%;
+            text-align: center;
             font-size: 14px;
             color: #777;
+            padding: 10px;
+            background-color: #f4f7fc;
         }
     </style>
 </head>
@@ -110,9 +121,13 @@
         </div>
 
         <div class="btn-group">
-            <a href="/employees/view/" class="btn">View Profile</a>
+            <!-- Edit Profile Button -->
             <a href="/update/{{ id }}" class="btn edit">Edit Profile</a>
-            <a href="/delete/{{ id }}" class="btn delete">Delete Profile</a>
+
+            <!-- Delete Profile Form -->
+            <form action="/delete/{{ id }}" method="post" id="deleteForm_{{ id }}">
+                <button type="submit" class="btn delete">Delete Profile</button>
+            </form>
         </div>
     </div>
 

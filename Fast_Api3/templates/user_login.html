@@ -132,6 +132,14 @@
     <div class="login-container">
         <h1>User Login</h1>
         <p>Access your account to manage your resume and profile details securely.</p>
+
+        <!-- Display error message if present -->
+        {% if error_message %}
+        <script>
+            alert("{{ error_message }}");
+        </script>
+        {% endif %}
+
         <form action="/user/login/" method="post">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -144,7 +152,7 @@
             <button type="submit" class="login-button">Login</button>
         </form>
         <div class="form-footer">
-            <p>Forgot your password? <a href="#">Reset it here</a></p>
+            <p>Forgot your password? <a href="/user/reset_password/">Reset it here</a></p>
             <p>Don't have an account? <a href="/register/">Sign up as User</a></p>
         </div>
         <div class="help-section">

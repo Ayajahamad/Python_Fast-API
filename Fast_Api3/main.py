@@ -141,7 +141,7 @@ def delete_employee(request : Request, e_id:int, db:Session = Depends(get_db)):
     db_emp = db.query(Employee).filter(Employee.id == e_id).first()
     
     if db_emp is None:
-        raise HTTPException(status_code=404, detail="File not found")
+         return JSONResponse(content={"message": "Employee not found"}, status_code=404)
     
     #--------Removing A File in Local Directory---------
     UPLOAD_DIRECTORY = os.path.abspath("./uploads")
@@ -158,7 +158,14 @@ def delete_employee(request : Request, e_id:int, db:Session = Depends(get_db)):
     db.delete(db_emp)
     db.commit()
 
-    return JSONResponse(content={"id": db_emp.id,"name":db_emp.e_name,"file":db_emp.filename,"message":"Successfully Deleted"}) 
+    # return JSONResponse(content={"id": db_emp.id,"name":db_emp.e_name,"file":db_emp.filename,"message":"Successfully Deleted"}) 
+    return JSONResponse(content={
+            "id": db_emp.id,
+            "name": db_emp.e_name,
+            "file": db_emp.filename,
+            "message": "Successfully Deleted"
+        })
+
 
 # Get the HTML For Updating.
 @app.get("/update/{e_id}")   
@@ -203,7 +210,20 @@ async def upload_employee(
     
     db.commit()
 
-    return JSONResponse(content={"id": db_emp.id,"message":"Successfully Updated"}) 
+    # Render the success page using the uploaded Employee details
+    return templates.TemplateResponse(
+            "upload_success.html", 
+            {
+                "request": request, 
+                "id":db_emp.id,
+                "file_id": db_emp.id, 
+                "name": db_emp.e_name, 
+                "email": db_emp.email, 
+                "filename": db_emp.filename,
+                # "emp":db_employee
+            }
+        )
+    # return JSONResponse(content={"id": db_emp.id,"message":"Successfully Updated"}) 
 
 
 @app.get("/get_allemployees/")
@@ -230,7 +250,6 @@ def get_allemployees(db:Session = Depends(get_db)):
         
     return JSONResponse(content={"Employees": emp_data})
 
-
 # ------------------------------------User and Admin Registration-----------------------------------------------------------
 # Get the HTML For Create_User.
 @app.get("/register/")   
@@ -256,7 +275,7 @@ def register(
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
-    return JSONResponse(content={"User": "db_user"})
+    return templates.TemplateResponse("index.html",{"request":request})
 
 # ------------------------Admin Registration----------------------------------------- 
 # # Get the HTML For Create_User.
@@ -305,7 +324,14 @@ def user_login(
             # return JSONResponse(content={"user": "User Logged in seccessfully"})
             return templates.TemplateResponse("user_logged_in.html",{"request":request,"user":user})
        
-    return JSONResponse(content={"Error": "Wrong Username or Password"})
+    # return JSONResponse(content={"Error": "Wrong Username or Password"})
+    # return templates.TemplateResponse("user_login.html",{"request":request,"user":user}) 
+     # If login failed, pass error flag to the template
+    error_message = "Username or Password is incorrect."
+    return templates.TemplateResponse(
+        "user_login.html", 
+        {"request": request, "error_message": error_message}
+    )
         
 # -----------------------Login For Admin------------------------------------------------
 # Get the HTML For Admin_login.
@@ -326,7 +352,8 @@ def admin_login(
     for user in users:
         if user.username == username and user.password == password:
             # return JSONResponse(content={"user": "Admin Logged in seccessfully"})
-            return templates.TemplateResponse("admin_logged_in.html",{"request":request})
+            return templates.TemplateResponse("admin_logged_in.html",{"request":request, "user":user})
+            
 
     return JSONResponse(content={"Error": "Wrong Username or Password"})
         
@@ -334,4 +361,22 @@ def admin_login(
 @app.get("/index/")   
 def create_user(request : Request):
     return templates.TemplateResponse("index.html",{"request":request})
-        
+
+# -----------------Reset the password -------------------
+@app.get("/user/reset_password/", response_class=HTMLResponse)
+def reset_password_form(request: Request):
+    return templates.TemplateResponse("reset_password.html", {"request": request})
+
+@app.post("/user/reset_password/", response_class=HTMLResponse)
+def reset_password(
+    request: Request, 
+    username: str = Form(...), 
+    new_password: str = Form(...), 
+    db: Session = Depends(get_db)
+):
+    user = db.query(User).filter(User.username == username).first()
+    if user:
+        user.password = new_password
+        db.commit()
+        return templates.TemplateResponse("user_login.html", {"request": request})
+    return JSONResponse(content={"Error": "User not found"})

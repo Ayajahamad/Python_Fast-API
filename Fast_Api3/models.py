@@ -2,6 +2,8 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, LargeBinary, BigInteger
 from sqlalchemy.orm import sessionmaker, Session
 from database_config import DATABASE_URL
+from datetime import datetime
+from sqlalchemy import Column, Integer, String, DateTime
 
 
 # The line Base = declarative_base() is part of the SQLAlchemy library and is used to create a base class for all the models (database tables) in an application.
@@ -29,6 +31,7 @@ class User(Base):
     username = Column(String, unique=True, index=True)
     password = Column(String)
     role = Column(String)  # 'admin' or 'candidate'
+    created_at = Column(DateTime, default=datetime.utcnow)
     
 
 # Database connection setup

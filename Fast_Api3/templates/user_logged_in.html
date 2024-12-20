@@ -134,13 +134,13 @@
         <div class="user-details">
             <h2>Your Details</h2>
             <p><strong>Name:</strong> {{user.username}}</p>
-            <p><strong>Password:</strong> {{user.password}} </p>
-            <p><strong>Member Since:</strong> [Registration Date]</p>
+            <p><strong>Role:</strong> {{user.role}} </p>
+            <p><strong>Member Since:</strong> {{user.created_at}} </p>
         </div>
 
         <div class="quick-links">
-            <a href="/user/profile" class="link">View Profile</a>
-            <a href="/user/edit" class="link">Edit Details</a>
+            <!--<a href="/user/profile" class="link">View Profile</a>-->
+            <!--<a href="/user/edit" class="link">Edit Details</a>-->
             <a href="/index/" class="link">Logout</a>
         </div>
 
