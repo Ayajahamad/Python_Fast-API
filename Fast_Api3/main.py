@@ -318,7 +318,7 @@ def user_login(
     
     for user in users:
         print(user.username)
-        if username == user.username and password == user.password:
+        if username == user.username and password == user.password and user.role == 'user':
             print("user :",user.username)
             print("user :",user.password)
             # return JSONResponse(content={"user": "User Logged in seccessfully"})
@@ -350,22 +350,22 @@ def admin_login(
     users = db.query(User).all()
     
     for user in users:
-        if user.username == username and user.password == password:
+        if user.username == username and user.password == password and user.role == 'admin':
             # return JSONResponse(content={"user": "Admin Logged in seccessfully"})
             return templates.TemplateResponse("admin_logged_in.html",{"request":request, "user":user})
             
 
-    return JSONResponse(content={"Error": "Wrong Username or Password"})
+    return JSONResponse(content={"Error": "Wrong Username or Password or not an Admin"})
         
 # -----------------------------Index page Link------------------------------------------
 @app.get("/index/")   
 def create_user(request : Request):
     return templates.TemplateResponse("index.html",{"request":request})
 
-# -----------------Reset the password -------------------
+# -----------------User Reset the password -------------------
 @app.get("/user/reset_password/", response_class=HTMLResponse)
 def reset_password_form(request: Request):
-    return templates.TemplateResponse("reset_password.html", {"request": request})
+    return templates.TemplateResponse("user_reset_password.html", {"request": request})
 
 @app.post("/user/reset_password/", response_class=HTMLResponse)
 def reset_password(
@@ -375,8 +375,33 @@ def reset_password(
     db: Session = Depends(get_db)
 ):
     user = db.query(User).filter(User.username == username).first()
-    if user:
+    # if user:
+    if user and user.role.strip().lower() == "user":
+        print(user.role)
         user.password = new_password
         db.commit()
         return templates.TemplateResponse("user_login.html", {"request": request})
-    return JSONResponse(content={"Error": "User not found"})
+    return JSONResponse(content={"Error": "User not found"},status_code=400)
+
+# -----------------Admin Reset the password -------------------
+
+@app.get("/admin/reset_password/", response_class=HTMLResponse)
+def reset_password_form(request: Request):
+    return templates.TemplateResponse("admin_reset_password.html", {"request": request})
+
+@app.post("/admin/reset_password/", response_class=HTMLResponse)
+def reset_password(
+    request: Request, 
+    username: str = Form(...), 
+    new_password: str = Form(...), 
+    db: Session = Depends(get_db)
+):
+    user = db.query(User).filter(User.username == username).first()
+    # if user.role == "Admin":
+    if user and user.role.strip().lower() == "admin":
+        print(user.role)
+        user.password = new_password
+        db.commit()
+        return templates.TemplateResponse("admin_login.html", {"request": request})
+    
+    return JSONResponse(content={"Error": "Admin not found"},status_code=400)
